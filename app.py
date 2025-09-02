@@ -1,42 +1,30 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
+import pymysql
+import os
 
 app = Flask(__name__)
 
-# Sample quiz data
-quiz_questions = [
-    {"q": "What is the capital of Kenya?", "a": "Nairobi"},
-    {"q": "Solve: 5 + 7", "a": "12"},
-    {"q": "Who discovered gravity?", "a": "Isaac Newton"}
-]
+# Database connection
+db = pymysql.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
+)
+cursor = db.cursor()
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("home.html")
+    cursor.execute("SELECT 'Hello from MariaDB!'")
+    result = cursor.fetchone()
+    return render_template("home.html", message=result[0])
 
-@app.route("/quiz", methods=["GET", "POST"])
-def quiz():
-    feedback = ""
-    if request.method == "POST":
-        answer = request.form.get("answer", "").strip().lower()
-        correct = quiz_questions[0]["a"].lower()
-        if answer == correct:
-            feedback = "✅ Correct!"
-        else:
-            feedback = f"❌ Wrong. Correct Answer: {quiz_questions[0]['a']}"
-    return render_template("quiz.html", question=quiz_questions[0]["q"], feedback=feedback)
+# New deck route
+@app.route("/deck")
+def deck():
+    return render_template("deck.html")
 
-@app.route("/resources")
-def resources():
-    resources_list = [
-        {"title": "Math Revision Notes", "link": "#"},
-        {"title": "Science Past Papers", "link": "#"},
-        {"title": "Geography Explainer Videos", "link": "#"},
-    ]
-    return render_template("resources.html", resources=resources_list)
-
-@app.route("/community")
-def community():
-    return render_template("community.html")
-
+# Run the Flask app locally
 if __name__ == "__main__":
     app.run(debug=True)
+

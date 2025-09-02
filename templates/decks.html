@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>EduBridge — Pitch Deck</title>
+<style>
+  :root { --bg:#0b1020; --fg:#f7f8fa; --muted:#aab3c5; --accent:#3ddc84; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
+  .slides { height:100%; width:100%; display:flex; align-items:center; justify-content:center; }
+  .slide { display:none; padding:6vh 7vw; max-width:1200px; width:100%; }
+  .slide.active { display:block; }
+  h1,h2 { margin:0 0 .6rem 0; line-height:1.15 }
+  h1 { font-size: clamp(2rem,4vw,3rem); }
+  h2 { font-size: clamp(1.6rem,3.5vw,2.4rem); color: var(--accent);}
+  p, li { font-size: clamp(1rem,1.6vw,1.25rem); color: var(--fg); }
+  .muted { color: var(--muted); }
+  .grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+  .card { background:#121735; border:1px solid #1e2647; border-radius:16px; padding:1rem 1.25rem; }
+  .kbd { display:inline-block; border:1px solid #586079; color:#cdd4e7; padding:.1rem .45rem; border-radius:.4rem; font-size:.95rem; }
+  .footer { position:fixed; bottom:12px; left:0; right:0; text-align:center; color:var(--muted); font-size:.95rem;}
+  .logo { font-weight:700; letter-spacing:.4px; }
+  .btn { display:inline-block; margin-top:.8rem; padding:.6rem 1rem; border-radius:.6rem; border:1px solid #2b365f; text-decoration:none; color:var(--fg); }
+  .btn:hover { background:#151c3a; }
+  ul { margin: .5rem 0 0 1.1rem; }
+</style>
+</head>
+<body>
+<div class="slides">
+
+  <section class="slide active">
+    <h1>EduBridge <span class="muted">— SDG 4: Quality Education</span></h1>
+    <p class="muted">Interactive quizzes • Curated resources • Community learning</p>
+    <p>Hackathon: Vibe Coding 3.0 • August 27 – September 2, 2025</p>
+    <p><span class="kbd">←</span> / <span class="kbd">→</span> to navigate • <span class="kbd">H</span> for help</p>
+  </section>
+
+  <section class="slide">
+    <h2>Problem</h2>
+    <ul>
+      <li>Students lack engaging tools to assess learning and get targeted resources.</li>
+      <li>Learning gaps persist in underserved schools (device + connectivity constraints).</li>
+      <li>Teachers spend time creating quizzes and finding quality materials.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Solution: EduBridge</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Adaptive Quizzes</h3>
+        <p>Lightweight quizzes with instant feedback, aligned to local curricula.</p>
+      </div>
+      <div class="card">
+        <h3>Curated Resources</h3>
+        <p>Offline-friendly PDFs/videos by topic and difficulty.</p>
+      </div>
+      <div class="card">
+        <h3>Community</h3>
+        <p>Students & teachers share tips, explainers, and mini-guides.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Product Snapshot</h2>
+    <ul>
+      <li>Web app (Flask) with clean UI: <span class="logo">Home • Quiz • Resources • Community</span></li>
+      <li>MariaDB (or SQLite) for storing content and posts.</li>
+      <li>Designed for low bandwidth, mobile-first.</li>
+    </ul>
+    <a class="btn" href="/" target="_blank">Open Live Demo</a>
+  </section>
+
+  <section class="slide">
+    <h2>Impact (SDG 4)</h2>
+    <ul>
+      <li>Improves learning outcomes with immediate feedback.</li>
+      <li>Reduces teacher prep time via reusable content.</li>
+      <li>Inclusive access (offline-first assets, minimal data usage).</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Who Benefits</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Students</h3>
+        <p>Practice quizzes, track progress, find bite-size explainers.</p>
+      </div>
+      <div class="card">
+        <h3>Teachers</h3>
+        <p>Share quizzes/resources, view common gaps to tailor lessons.</p>
+      </div>
+      <div class="card">
+        <h3>Schools/NGOs</h3>
+        <p>Low-cost tool to supplement classrooms & after-school programs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Market & Opportunity</h2>
+    <ul>
+      <li>K–12 edtech in Sub-Saharan Africa growing rapidly (mobile-first).</li>
+      <li>Initial wedge: pilot with a cluster of schools; expand via NGO partnerships.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>How It Works (Architecture)</h2>
+    <ul>
+      <li>Frontend: HTML/CSS (lightweight).</li>
+      <li>Backend: Flask routes for quiz, content, community.</li>
+      <li>DB: MariaDB (cloud) or SQLite fallback.</li>
+      <li>Deployment: Render (gunicorn).</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Now:</strong> Quizzes + curated resources + community posts.</li>
+      <li><strong>Next:</strong> Teacher dashboard, per-topic mastery, badges.</li>
+      <li><strong>Later:</strong> Adaptive engine, SMS/USSD access, multilingual content.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Traction (Hackathon)</h2>
+    <ul>
+      <li>Working prototype (live).</li>
+      <li>Initial content sets and quizzes.</li>
+      <li>Deployment + GitHub repo + deck link.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Team</h2>
+    <p>Ruth Osoro — Full-stack (Flask) • Data • Community outreach</p>
+    <p class="muted">Advisors/mentors: TBD (educators & NGO partners)</p>
+  </section>
+
+  <section class="slide">
+    <h2>Ask</h2>
+    <ul>
+      <li>Pilot access to 2–3 schools for user testing.</li>
+      <li>Mentorship on curriculum alignment & content partnerships.</li>
+      <li>Support for hosting and SMS/USSD integration.</li>
+    </ul>
+  </section>
+
+  <section class="slide">
+    <h2>Thank You</h2>
+    <p>Live app: <span class="logo">/</span> • Repo: GitHub • Deck: this page</p>
+    <p>Contact: yourname@example.com</p>
+    <p><span class="kbd">←</span> / <span class="kbd">→</span> to review</p>
+  </section>
+
+</div>
+
+<div class="footer">EduBridge • SDG 4 • Vibe Coding Hackathon 3.0</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  function show(n){ slides.forEach(s=>s.classList.remove('active')); slides[n].classList.add('active'); }
+  function next(){ i = Math.min(slides.length-1, i+1); show(i); }
+  function prev(){ i = Math.max(0, i-1); show(i); }
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowRight' || e.key==='PageDown' || e.key===' ') next();
+    if(e.key==='ArrowLeft'  || e.key==='PageUp'   || e.key==='Backspace') prev();
+    if(e.key.toLowerCase()==='h') alert('Use ← and → (or Space/Page keys) to navigate.');
+  });
+  show(i);
+</script>
+</body>
+</html>
